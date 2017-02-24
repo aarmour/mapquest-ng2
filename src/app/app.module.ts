@@ -3,41 +3,41 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { DBModule } from '@ngrx/db';
-import { RouterStoreModule } from '@ngrx/router-store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { StoreModule } from '@ngrx/store';
+// import { EffectsModule } from '@ngrx/effects';
+// import { DBModule } from '@ngrx/db';
+// import { RouterStoreModule } from '@ngrx/router-store';
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MaterialModule } from '@angular/material';
 
-import { ComponentsModule } from './components';
-import { BookEffects } from './effects/book';
-import { CollectionEffects } from './effects/collection';
-import { BookExistsGuard } from './guards/book-exists';
+// import { ComponentsModule } from './components';
+// import { BookEffects } from './effects/book';
+// import { CollectionEffects } from './effects/collection';
+// import { BookExistsGuard } from './guards/book-exists';
 
-import { AppComponent } from './containers/app';
-import { FindBookPageComponent } from './containers/find-book-page';
-import { ViewBookPageComponent } from './containers/view-book-page';
-import { SelectedBookPageComponent } from './containers/selected-book-page';
-import { CollectionPageComponent } from './containers/collection-page';
-import { NotFoundPageComponent } from './containers/not-found-page';
+import { AppComponent } from './app.component';
+// import { FindBookPageComponent } from './containers/find-book-page';
+// import { ViewBookPageComponent } from './containers/view-book-page';
+// import { SelectedBookPageComponent } from './containers/selected-book-page';
+// import { CollectionPageComponent } from './containers/collection-page';
+// import { NotFoundPageComponent } from './containers/not-found-page';
 
-import { GoogleBooksService } from './services/google-books';
+// import { GoogleBooksService } from './services/google-books';
 
+import { StateModule } from './state';
 import { routes } from './routes';
-import { reducer } from './reducers';
-import { schema } from './db';
-
-
+// import { reducer } from './reducers';
+// import { schema } from './db';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     MaterialModule,
-    ComponentsModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    // ComponentsModule,
+    RouterModule.forRoot(routes, { useHash: false }),
 
+    StateModule.forRoot(),
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer
      * function or object map of reducer functions. If passed an object of
@@ -45,13 +45,13 @@ import { schema } from './db';
      * meta-reducer. This returns all providers for an @ngrx/store
      * based application.
      */
-    StoreModule.provideStore(reducer),
+    // StoreModule.provideStore(reducer),
 
     /**
      * @ngrx/router-store keeps router state up-to-date in the store and uses
      * the store as the single source of truth for the router's state.
      */
-    RouterStoreModule.connectRouter(),
+    // RouterStoreModule.connectRouter(),
 
     /**
      * Store devtools instrument the store retaining past versions of state
@@ -63,7 +63,7 @@ import { schema } from './db';
      *
      * See: https://github.com/zalmoxisus/redux-devtools-extension
      */
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    // StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
     /**
      * EffectsModule.run() sets up the effects class to be initialized
@@ -71,26 +71,26 @@ import { schema } from './db';
      *
      * See: https://github.com/ngrx/effects/blob/master/docs/api.md#run
      */
-    EffectsModule.run(BookEffects),
-    EffectsModule.run(CollectionEffects),
+    // EffectsModule.run(BookEffects),
+    // EffectsModule.run(CollectionEffects),
 
     /**
      * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
      * service available.
      */
-    DBModule.provideDB(schema),
+    // DBModule.provideDB(schema),
   ],
   declarations: [
     AppComponent,
-    FindBookPageComponent,
-    SelectedBookPageComponent,
-    ViewBookPageComponent,
-    CollectionPageComponent,
-    NotFoundPageComponent
+    // FindBookPageComponent,
+    // SelectedBookPageComponent,
+    // ViewBookPageComponent,
+    // CollectionPageComponent,
+    // NotFoundPageComponent
   ],
   providers: [
-    BookExistsGuard,
-    GoogleBooksService
+    // BookExistsGuard,
+    // GoogleBooksService
   ],
   bootstrap: [
     AppComponent

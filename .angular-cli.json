@@ -2,7 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
     "version": "1.0.0-beta.32.3",
-    "name": "example-app"
+    "name": "mapquest"
   },
   "apps": [
     {
@@ -17,7 +17,7 @@
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
-      "prefix": "bc",
+      "prefix": "mq",
       "styles": [
         "styles.css"
       ],

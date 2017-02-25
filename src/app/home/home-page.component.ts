@@ -4,7 +4,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   selector: 'mq-home-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <router-outlet></router-outlet>
+    <mb-map></mb-map>
   `
 })
 export class HomePageComponent {

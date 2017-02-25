@@ -5,9 +5,12 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '@angular/material';
 
+import { environment } from '../environments/environment';
+
 import { AppRoutingModule } from './app-routing.module';
 import { StateModule } from './state';
 import { HomeModule } from './home';
+import { MapboxModule } from './mapbox';
 
 import { AppComponent } from './app.component';
 import { NotFoundPageComponent } from './not-found-page.component';
@@ -19,6 +22,7 @@ import { NotFoundPageComponent } from './not-found-page.component';
     MaterialModule,
 
     StateModule.forRoot(),
+    MapboxModule.forRoot(environment.mapbox.accessToken),
     HomeModule,
 
     // The application routing module should always be last

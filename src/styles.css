@@ -11,3 +11,10 @@ html {
   -ms-overflow-style: none;
   overflow: auto;
 }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}

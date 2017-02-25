@@ -3,6 +3,8 @@ import { EventEmitter, Injectable, Inject } from '@angular/core';
 const createId = require('hat');
 const mapbox = require('mapbox-gl/dist/mapbox-gl');
 
+const ContainerControl = require('../mapbox-plugins').ContainerControl;
+
 @Injectable()
 export class MapboxService {
 
@@ -12,7 +14,7 @@ export class MapboxService {
 
   bindToOutputs(map: any, outputs: Array<Array<any>>) {
     outputs.forEach(([name, output]) => {
-      map.on(name, (e) => output.emit(e));
+      map.on(name, (e: any) => output.emit(e));
     });
   }
 
@@ -20,8 +22,16 @@ export class MapboxService {
     return createId();
   }
 
-  map(options: Object) {
+  map(options: Object): mapboxgl.Map {
     return new mapbox.Map(options);
+  }
+
+  containerControl(): mapboxgl.Control {
+    return new ContainerControl() as mapboxgl.Control;
+  }
+
+  navigationControl(): mapboxgl.Control {
+    return new mapbox.NavigationControl();
   }
 
 }

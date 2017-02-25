@@ -1,10 +1,12 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'mq-app',
+  selector: 'mq-home-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<router-outlet></router-outlet>`
+  template: `
+    <router-outlet></router-outlet>
+  `
 })
-export class AppComponent {
+export class HomePageComponent {
 
 }

@@ -2,6 +2,8 @@
 @import "~@angular/material/core/theming/prebuilt/deeppurple-amber.css";
 @import "~mapbox-gl/dist/mapbox-gl.css";
 
+@import "app/mapbox-plugins/mapbox-plugins.css";
+
 * {
   box-sizing: border-box;
 }

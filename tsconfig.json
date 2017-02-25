@@ -18,7 +18,8 @@
     "target": "es5",
     "skipLibCheck": true,
     "types": [
-      "hammerjs"
+      "hammerjs",
+      "node"
     ]
   },
   "exclude": [

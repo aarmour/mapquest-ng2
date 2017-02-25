@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { ActionReducer } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
 /**
  * The compose function is one of our most handy tools. In basic terms, you give
@@ -37,7 +37,7 @@ import { combineReducers } from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-import * as fromLayout from './layout';
+import * as fromHome from './home/reducers';
 
 
 /**
@@ -45,7 +45,7 @@ import * as fromLayout from './layout';
  * our top level state interface is just a map of keys to inner state types.
  */
 export interface State {
-  layout: fromLayout.State;
+  home: fromHome.State;
   router: fromRouter.RouterState;
 }
 
@@ -58,7 +58,7 @@ export interface State {
  * the result from right to left.
  */
 const reducers = {
-  layout: fromLayout.reducer,
+  home: fromHome.reducer,
   router: fromRouter.routerReducer,
 };
 
@@ -144,8 +144,8 @@ export function reducer(state: any, action: any) {
 // });
 
 /**
- * Layout Reducers
+ * Home Reducers
  */
-export const getLayoutState = (state: State) => state.layout;
+export const getHomeState = (state: State) => state.home;
 
-export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowSidenav);
+export const getShowSidenav = createSelector(getHomeState, fromHome.getShowSidenav);

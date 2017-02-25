@@ -19,6 +19,7 @@
     "skipLibCheck": true,
     "types": [
       "hammerjs",
+      "mapbox-gl",
       "node"
     ]
   },

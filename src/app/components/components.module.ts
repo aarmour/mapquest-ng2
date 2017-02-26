@@ -3,13 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from '@angular/material';
 
+import { FabInputComponent } from './fab-input/fab-input.component';
+
 @NgModule({
   imports: [
     CommonModule,
 
     MaterialModule
   ],
-  declarations: [],
-  providers: []
+  declarations: [
+    FabInputComponent
+  ],
+  exports: [
+    FabInputComponent
+  ]
 })
 export class ComponentsModule { }

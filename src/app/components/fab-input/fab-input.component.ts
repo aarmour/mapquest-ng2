@@ -29,7 +29,7 @@ export class FabInputComponent {
 
   toggle() {
     this.expanded = !this.expanded;
-    if (this.expanded) this.input.nativeElement.focus();
+    if (this.expanded) this.input.nativeElement.select();
   }
 
   onSubmit(e) {

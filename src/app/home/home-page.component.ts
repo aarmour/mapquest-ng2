@@ -7,7 +7,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     <mb-map>
       <mb-navigation-control></mb-navigation-control>
       <mb-container-control>
-        <button md-mini-fab><md-icon>search</md-icon></button>
+        <mq-fab-input icon="search"></mq-fab-input>
       </mb-container-control>
     </mb-map>
   `

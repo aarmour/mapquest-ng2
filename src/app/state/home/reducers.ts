@@ -10,7 +10,7 @@ export interface State {
 };
 
 const reducers = {
-  layer: fromLayout.reducer,
+  layout: fromLayout.reducer,
   search: fromSearch.reducer
 };
 

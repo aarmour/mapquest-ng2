@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@angular/material';
 
 import { FabInputComponent } from './fab-input/fab-input.component';
+import { SidePanelComponent } from './side-panel/side-panel.component';
+import { SidePanelContainerComponent } from './side-panel/side-panel-container.component';
 
 @NgModule({
   imports: [
@@ -12,10 +14,14 @@ import { FabInputComponent } from './fab-input/fab-input.component';
     MaterialModule
   ],
   declarations: [
-    FabInputComponent
+    FabInputComponent,
+    SidePanelComponent,
+    SidePanelContainerComponent
   ],
   exports: [
-    FabInputComponent
+    FabInputComponent,
+    SidePanelComponent,
+    SidePanelContainerComponent
   ]
 })
 export class ComponentsModule { }

@@ -148,4 +148,4 @@ export function reducer(state: any, action: any) {
  */
 export const getHomeState = (state: State) => state.home;
 
-export const getShowSidenav = createSelector(getHomeState, fromHome.getShowSidenav);
+export const getHomeShowSidenav = createSelector(getHomeState, fromHome.getShowSidePanel);

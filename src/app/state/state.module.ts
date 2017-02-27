@@ -2,14 +2,24 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { StoreModule } from '@ngrx/store';
 import { RouterStoreModule } from '@ngrx/router-store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { MapquestModule } from '../mapquest';
+
+import { SearchEffects } from './home/search/effects';
 
 import { reducer } from './reducers';
 
 @NgModule({
   imports: [
     StoreModule.provideStore(reducer),
-    RouterStoreModule.connectRouter()
+    RouterStoreModule.connectRouter(),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
+    MapquestModule,
+
+    EffectsModule.run(SearchEffects)
   ]
 })
 export class StateRootModule { }

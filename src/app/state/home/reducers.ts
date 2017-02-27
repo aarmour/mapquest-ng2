@@ -1,28 +1,37 @@
-import * as home from './actions';
+import { combineReducers } from '@ngrx/store';
+import { createSelector } from 'reselect';
+
+import * as fromLayout from './layout/reducers';
+import * as fromSearch from './search/reducers';
 
 export interface State {
-  showSidenav: boolean;
-}
-
-const initialState: State = {
-  showSidenav: false,
+  layout: Object,
+  search: Object
 };
 
-export function reducer(state = initialState, action: home.Actions): State {
-  switch (action.type) {
-    case home.ActionTypes.CLOSE_SIDENAV:
-      return {
-        showSidenav: false
-      };
+const reducers = {
+  layer: fromLayout.reducer,
+  search: fromSearch.reducer
+};
 
-    case home.ActionTypes.OPEN_SIDENAV:
-      return {
-        showSidenav: true
-      };
+export const reducer = combineReducers(reducers);
 
-    default:
-      return state;
-  }
-}
+/**
+ * Layout
+ */
 
-export const getShowSidenav = (state: State) => state.showSidenav;
+export const getLayoutState = (state: State) => state.layout;
+
+export const getShowSidePanel = createSelector(getLayoutState, fromLayout.getShowSidePanel);
+
+/**
+ * Search
+ */
+
+export const getSearchState = (state: State) => state.search;
+
+export const getSearchIds = createSelector(getSearchState, fromSearch.getIds);
+
+export const getSearchQuery = createSelector(getSearchState, fromSearch.getQuery);
+
+export const getSearchLoading = createSelector(getSearchState, fromSearch.getLoading);

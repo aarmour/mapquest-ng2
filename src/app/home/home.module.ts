@@ -5,9 +5,10 @@ import { MaterialModule } from '@angular/material';
 
 import { ComponentsModule } from '../components';
 import { MapboxModule } from '../mapbox';
+import { StateModule } from '../state';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { HomePageComponent } from './home-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { HomePageComponent } from './home-page.component';
 
     ComponentsModule,
     MapboxModule,
+    StateModule,
 
     HomeRoutingModule
   ],

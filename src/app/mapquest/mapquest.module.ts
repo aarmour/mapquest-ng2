@@ -1,11 +1,16 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common'
 
+import { MapquestSearchAheadService, MapquestSearchService } from './api';
+
 @NgModule({
   imports: [
     CommonModule
   ],
-  providers: []
+  providers: [
+    MapquestSearchAheadService,
+    MapquestSearchService
+  ]
 })
 export class MapquestModule {
 

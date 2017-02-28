@@ -1,15 +1,19 @@
+import 'rxjs/add/operator/let';
+import { Observable } from 'rxjs/Observable';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { replace } from '@ngrx/router-store';
 
 import { State } from '../../state';
-import * as search from '../../state/home/search/actions';
+import * as fromRoot from '../../state/reducers';
 
 @Component({
   selector: 'mq-home-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mq-side-panel-container>
-      <mq-side-panel>
+      <mq-side-panel [opened]="showSidePanel$ | async">
+        <router-outlet></router-outlet>
       </mq-side-panel>
 
       <mb-map>
@@ -24,10 +28,14 @@ import * as search from '../../state/home/search/actions';
 })
 export class HomePageComponent {
 
-  constructor(private store: Store<State>) {}
+  showSidePanel$: Observable<boolean>;
+
+  constructor(private store: Store<State>) {
+    this.showSidePanel$ = this.store.select(fromRoot.getHomeShowSidenav);
+  }
 
   search(query) {
-    this.store.dispatch(new search.SearchAction(query));
+    this.store.dispatch(replace(['/search', query]));
   }
 
 }

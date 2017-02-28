@@ -9,6 +9,7 @@ import { StateModule } from '../state';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
+import { SearchPanelContainerComponent } from './search/search-panel-container.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     HomeRoutingModule
   ],
   declarations: [
-    HomePageComponent
+    HomePageComponent,
+    SearchPanelContainerComponent
   ]
 })
 export class HomeModule { }

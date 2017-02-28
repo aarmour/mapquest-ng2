@@ -1,4 +1,4 @@
-import * as home from './actions';
+import * as layout from './actions';
 
 export interface State {
   showSidePanel: boolean;
@@ -8,14 +8,14 @@ const initialState: State = {
   showSidePanel: false,
 };
 
-export function reducer(state = initialState, action: home.Actions): State {
+export function reducer(state = initialState, action: layout.Actions): State {
   switch (action.type) {
-    case home.ActionTypes.CLOSE_SIDE_PANEL:
+    case layout.ActionTypes.CLOSE_SIDE_PANEL:
       return {
         showSidePanel: false
       };
 
-    case home.ActionTypes.OPEN_SIDE_PANEL:
+    case layout.ActionTypes.OPEN_SIDE_PANEL:
       return {
         showSidePanel: true
       };

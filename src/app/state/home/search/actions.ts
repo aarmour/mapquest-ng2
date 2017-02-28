@@ -2,8 +2,8 @@ import { Action } from '@ngrx/store';
 import { type } from '../../util';
 
 export const ActionTypes = {
-  SEARCH: type('[Search] Search'),
-  SEARCH_COMPLETE: type('[Search] Search Complete')
+  SEARCH: type('[Home:Search] Search'),
+  SEARCH_COMPLETE: type('[Home:Search] Search Complete')
 };
 
 export class SearchAction implements Action {

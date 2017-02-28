@@ -6,6 +6,7 @@ import { MaterialModule } from '@angular/material';
 import { FabInputComponent } from './fab-input/fab-input.component';
 import { SidePanelComponent } from './side-panel/side-panel.component';
 import { SidePanelContainerComponent } from './side-panel/side-panel-container.component';
+import { SidePanelSpacerComponent } from './side-panel/side-panel-spacer.component';
 
 @NgModule({
   imports: [
@@ -16,12 +17,14 @@ import { SidePanelContainerComponent } from './side-panel/side-panel-container.c
   declarations: [
     FabInputComponent,
     SidePanelComponent,
-    SidePanelContainerComponent
+    SidePanelContainerComponent,
+    SidePanelSpacerComponent
   ],
   exports: [
     FabInputComponent,
     SidePanelComponent,
-    SidePanelContainerComponent
+    SidePanelContainerComponent,
+    SidePanelSpacerComponent
   ]
 })
 export class ComponentsModule { }

@@ -151,3 +151,9 @@ export const getHomeState = (state: State) => state.home;
 export const getHomeShowSidenav = createSelector(getHomeState, fromHome.getShowSidePanel);
 
 export const getSearchLoading = createSelector(getHomeState, fromHome.getSearchLoading);
+
+export const getSearchEntities = createSelector(getHomeState, fromHome.getSearchEntities);
+
+export const getSearchEntitiesAsList = createSelector(getHomeState, fromHome.getSearchEntitiesAsList);
+
+export const getSelectedSearchEntitiesAsList = createSelector(getHomeState, fromHome.getSelectedSearchEntitiesAsList);

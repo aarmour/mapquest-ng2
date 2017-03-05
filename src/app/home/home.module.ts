@@ -10,6 +10,7 @@ import { StateModule } from '../state';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SearchPanelContainerComponent } from './search/search-panel-container.component';
+import { SearchResultComponent } from './search/components/search-result/search-result.component';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { SearchPanelContainerComponent } from './search/search-panel-container.c
   ],
   declarations: [
     HomePageComponent,
-    SearchPanelContainerComponent
+    SearchPanelContainerComponent,
+    SearchResultComponent
   ]
 })
 export class HomeModule { }

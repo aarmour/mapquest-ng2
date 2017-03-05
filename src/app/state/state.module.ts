@@ -19,7 +19,6 @@ import { reducer } from './reducers';
 
     MapquestModule,
 
-    // EffectsModule.run(MapEffects),
     EffectsModule.run(SearchEffects)
   ]
 })

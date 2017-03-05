@@ -16,8 +16,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
   private map: mapboxgl.Map;
 
   @Input() style: string = 'mapbox://styles/mapbox/light-v9';
-  @Input() lng: number = 0;
-  @Input() lat: number = 0;
+  @Input() center: { lng: number, lat: number } = { lng: 0, lat: 0};
   @Input() zoom: number = 0;
 
   @Output() move: EventEmitter<any> = new EventEmitter();
@@ -31,11 +30,14 @@ export class MapComponent implements AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if ('lng' in changes || 'lat' in changes || 'zoom' in changes) {
-      this.map.flyTo({
-        center: [this.lng, this.lat],
-        zoom: this.zoom
-      });
+    if (!this.map) return;
+    if ('center' in changes || 'zoom' in changes) {
+      if (this.extentHasChanged()) {
+        this.map.flyTo({
+          center: this.center as mapboxgl.LngLat,
+          zoom: this.zoom
+        });
+      }
     }
   }
 
@@ -44,7 +46,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
       container: this.id,
       style: this.style,
       zoom: this.zoom,
-      center: [this.lng, this.lat]
+      center: this.center
     });
 
     this.mapbox.bindToOutputs(this.map, [
@@ -59,6 +61,13 @@ export class MapComponent implements AfterViewInit, OnChanges {
   private addControls() {
     if (!this.controls) return;
     this.controls.forEach((control) => control.mbSetMap(this.map));
+  }
+
+  private extentHasChanged() {
+    const { center, zoom } = this;
+    const currentCenter = this.map.getCenter();
+    const currentZoom = this.map.getZoom();
+    return (center !== currentCenter || zoom !== currentZoom);
   }
 
 }

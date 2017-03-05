@@ -7,7 +7,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { MapquestModule } from '../mapquest';
 
-import { MapEffects } from './home/map/effects';
 import { SearchEffects } from './home/search/effects';
 
 import { reducer } from './reducers';

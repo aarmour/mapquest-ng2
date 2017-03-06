@@ -1,0 +1,51 @@
+@import '~@angular/material/core/theming/all-theme';
+// Plus imports for other components in your app.
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+
+$mq-green: (
+  50: #f3f8de,
+  100: #e3efb0,
+  200: #d2e680,
+  300: #c0db4c,
+  400: #b2d426,
+  500: #a5cc00,
+  600: #96ba00,
+  700: #86a600,
+  800: #759100,
+  900: #566a00,
+  A100: #82b1ff,
+  A200: #448aff,
+  A400: #2979ff,
+  A700: #2962ff,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$mq-app-primary: mat-palette($mq-green);
+$mq-app-accent:  mat-palette($mat-blue, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$mq-app-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$mq-app-theme: mat-light-theme($mq-app-primary, $mq-app-accent, $mq-app-warn);
+
+// Include theme styles for core and each component used in the app.
+@include angular-material-theme($mq-app-theme);

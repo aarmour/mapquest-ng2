@@ -1,8 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/core/theming/prebuilt/deeppurple-amber.css";
-@import "~mapbox-gl/dist/mapbox-gl.css";
+@import '~mapbox-gl/dist/mapbox-gl.css';
 
-@import "app/mapbox-plugins/mapbox-plugins.css";
+@import 'scss/reset.scss';
+@import 'scss/md-theme.scss';
+
+@import 'app/mapbox-plugins/mapbox-plugins.css';
 
 * {
   box-sizing: border-box;

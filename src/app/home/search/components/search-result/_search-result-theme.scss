@@ -2,6 +2,16 @@
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
 
+  mq-search-result {
+
+    &.selected {
+
+      .mq-search-result-heading {
+        border: solid 2px mat-color($primary, 500);
+      }
+    }
+  }
+
   .mq-search-result-heading {
 
     &:hover {

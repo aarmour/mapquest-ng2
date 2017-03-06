@@ -34,6 +34,7 @@ export function reducer(state: any, action: any) {
 /**
  * Home Reducers
  */
+
 export const getHomeState = (state: State) => state.home;
 
 export const getHomeShowSidenav = createSelector(getHomeState, fromHome.getShowSidePanel);
@@ -49,3 +50,7 @@ export const getSearchEntities = createSelector(getHomeState, fromHome.getSearch
 export const getSearchEntitiesAsList = createSelector(getHomeState, fromHome.getSearchEntitiesAsList);
 
 export const getSelectedSearchEntitiesAsList = createSelector(getHomeState, fromHome.getSelectedSearchEntitiesAsList);
+
+export const getSelectedSearchResult = createSelector(getHomeState, fromHome.getSelectedSearchResult);
+
+export const getSelectedSearchResultId = createSelector(getHomeState, fromHome.getSelectedSearchResultId);

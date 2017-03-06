@@ -3,7 +3,7 @@ $mq-search-result-border-radius: 4px;
 
 .mq-search-result-heading {
   display: flex;
-  align-items: center;
+  align-items: top;
   padding: 0.2em;
 
   border: solid $mq-search-result-border-width transparent;
@@ -12,7 +12,12 @@ $mq-search-result-border-radius: 4px;
 
   h1 {
     flex: 1;
+    margin: 0;
 
     font-size: 0.875em;
+  }
+
+  md-icon {
+    margin-right: 0.5em;
   }
 }

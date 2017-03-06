@@ -51,6 +51,10 @@ export const getSearchEntitiesAsList = createSelector(getSearchState, fromSearch
 
 export const getSelectedSearchEntitiesAsList = createSelector(getSearchState, fromSearch.getSelectedEntitiesAsList);
 
+export const getSelectedSearchResult = createSelector(getSearchState, fromSearch.getSelectedSearchResult);
+
+export const getSelectedSearchResultId = createSelector(getSearchState, fromSearch.getSelectedSearchResultId);
+
 export const getSearchQuery = createSelector(getSearchState, fromSearch.getQuery);
 
 export const getSearchLoading = createSelector(getSearchState, fromSearch.getLoading);

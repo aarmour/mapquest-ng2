@@ -3,6 +3,7 @@ import * as search from './actions';
 export interface State {
   ids: string[];
   entities: Object;
+  selected: string,
   loading: boolean;
   query: string;
 }
@@ -10,6 +11,7 @@ export interface State {
 const initialState: State = {
   ids: [],
   entities: {},
+  selected: '',
   loading: false,
   query: ''
 }
@@ -20,12 +22,11 @@ export function reducer(state = initialState, action: search.Actions): State {
       const query = action.payload;
 
       if (query === '') {
-        return {
+        return Object.assign({}, state, {
           ids: [],
-          entities: state.entities,
           loading: false,
           query
-        };
+        });
       }
 
       return Object.assign({}, state, {
@@ -41,12 +42,19 @@ export function reducer(state = initialState, action: search.Actions): State {
         return entities;
       }, {});
 
-      return {
+      return Object.assign({}, state, {
         ids: results.map(result => result.id),
         entities: Object.assign({}, state.entities, entities),
-        loading: false,
-        query: state.query
-      };
+        loading: false
+      });
+    }
+
+    case search.ActionTypes.SELECT_SEARCH_RESULT: {
+      const id = action.payload;
+
+      return Object.assign({}, state, {
+        selected: id
+      });
     }
 
     default: {
@@ -67,6 +75,10 @@ export const getEntitiesAsList = (state: State) => Object.keys(state.entities)
 
 export const getSelectedEntitiesAsList = (state: State) => state.ids
   .map((id) => state.entities[id]);
+
+export const getSelectedSearchResult = (state: State) => state.entities[state.selected];
+
+export const getSelectedSearchResultId = (state: State) => state.selected;
 
 export const getQuery = (state: State) => state.query;
 

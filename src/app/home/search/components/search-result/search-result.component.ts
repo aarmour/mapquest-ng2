@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  HostBinding,
   Input,
   OnInit,
   Output,
@@ -16,6 +17,10 @@ import {
 export class SearchResultComponent implements OnInit {
 
   @Input() display: string = '';
+
+  @Input()
+  @HostBinding('class.selected')
+  selected: boolean = false;
 
   @Output() select: EventEmitter<any> = new EventEmitter();
 

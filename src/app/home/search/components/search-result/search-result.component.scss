@@ -1,3 +1,18 @@
-h1 {
-  font-size: 1em;
+$mq-search-result-border-width: 2px;
+$mq-search-result-border-radius: 4px;
+
+.mq-search-result-heading {
+  display: flex;
+  align-items: center;
+  padding: 0.2em;
+
+  border: solid $mq-search-result-border-width transparent;
+  border-radius: $mq-search-result-border-radius;
+  cursor: pointer;
+
+  h1 {
+    flex: 1;
+
+    font-size: 0.875em;
+  }
 }

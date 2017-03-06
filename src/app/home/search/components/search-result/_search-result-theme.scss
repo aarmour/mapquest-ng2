@@ -1,0 +1,11 @@
+@mixin mq-search-result-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .mq-search-result-heading {
+
+    &:hover {
+      border: solid 2px mat-color($primary, 500);
+    }
+  }
+}

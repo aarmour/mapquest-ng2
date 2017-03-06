@@ -1,5 +1,7 @@
 @import '~@angular/material/core/theming/all-theme';
-// Plus imports for other components in your app.
+
+// Imports for other components in the app.
+@import 'src/app/home/search/components/search-result/search-result-theme';
 
 // Include the base styles for Angular Material core. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -47,5 +49,8 @@ $mq-app-warn: mat-palette($mat-red);
 // Create the theme object (a Sass map containing all of the palettes).
 $mq-app-theme: mat-light-theme($mq-app-primary, $mq-app-accent, $mq-app-warn);
 
-// Include theme styles for core and each component used in the app.
+// Theme styles for core.
 @include angular-material-theme($mq-app-theme);
+
+// Theme styles for each component.
+@include mq-search-result-theme($mq-app-theme);

@@ -1,11 +1,15 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MapComponent } from './map/map.component';
 import {
   ContainerControlComponent,
   NavigationControlComponent
-} from './control-components';
+} from './control';
+import {
+  LayerComponent,
+  MapComponent
+} from './map';
+import { GeojsonSourceComponent } from './source';
 import { MapboxService } from './mapbox.service';
 
 @NgModule({
@@ -13,16 +17,20 @@ import { MapboxService } from './mapbox.service';
     CommonModule
   ],
   declarations: [
-    MapComponent,
     ContainerControlComponent,
+    GeojsonSourceComponent,
+    LayerComponent,
+    MapComponent,
     NavigationControlComponent
   ],
   providers: [
     MapboxService
   ],
   exports: [
-    MapComponent,
     ContainerControlComponent,
+    GeojsonSourceComponent,
+    LayerComponent,
+    MapComponent,
     NavigationControlComponent
   ]
 })

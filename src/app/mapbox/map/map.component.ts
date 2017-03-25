@@ -1,7 +1,20 @@
-import { AfterViewInit, Component, ContentChildren, EventEmitter, Input, OnChanges, Output, QueryList, SimpleChanges, forwardRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  QueryList,
+  SimpleChanges,
+  forwardRef
+} from '@angular/core';
 
 import { MapboxService } from '../mapbox.service';
-import { ControlComponent } from '../control-components/control.component';
+import { ControlComponent } from '../control';
+import { LayerComponent } from './layer.component';
+import { SourceComponent } from '../source';
 
 @Component({
   selector: 'mb-map',
@@ -24,6 +37,8 @@ export class MapComponent implements AfterViewInit, OnChanges {
   @Output() movestart: EventEmitter<any> = new EventEmitter();
 
   @ContentChildren(forwardRef(() => ControlComponent)) controls: QueryList<any>;
+  @ContentChildren(LayerComponent) layers: QueryList<any>;
+  @ContentChildren(forwardRef(() => SourceComponent)) sources: QueryList<any>;
 
   constructor(private mapbox: MapboxService) {
     this.id = mapbox.nextId();
@@ -56,11 +71,23 @@ export class MapComponent implements AfterViewInit, OnChanges {
     ]);
 
     this.addControls();
+    this.addSources();
+    this.addLayers();
   }
 
   private addControls() {
     if (!this.controls) return;
     this.controls.forEach((control) => control.mbSetMap(this.map));
+  }
+
+  private addLayers() {
+    if (!this.layers) return;
+    this.layers.forEach((layer) => layer.mbSetMap(this.map));
+  }
+
+  private addSources() {
+    if (!this.sources) return;
+    this.sources.forEach((source) => source.mbSetMap(this.map));
   }
 
   private extentHasChanged() {

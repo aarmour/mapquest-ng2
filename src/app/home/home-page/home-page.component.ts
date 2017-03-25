@@ -22,6 +22,8 @@ import * as fromMap from '../../state/home/map/actions';
         <mb-container-control>
           <mq-fab-input icon="search" (submit)="search($event)"></mq-fab-input>
         </mb-container-control>
+        <mb-geojson-source mb-id="search-results" [data]="searchResults$ | async"></mb-geojson-source>
+        <mb-layer mb-id="search-results" source="search-results" type="symbol" [layout]="{ 'icon-image': '{$icon}' }"></mb-layer>
       </mb-map>
     </mq-side-panel-container>
   `,
@@ -31,16 +33,17 @@ export class HomePageComponent {
 
   mapCenter$: Observable<Object>;
   mapZoom$: Observable<number>;
+  searchResults$: Observable<Object>;
   showSidePanel$: Observable<boolean>;
 
   constructor(private store: Store<State>) {
     this.mapCenter$ = this.store.select(fromRoot.getHomeMapCenter);
     this.mapZoom$ = this.store.select(fromRoot.getHomeMapZoom);
+    this.searchResults$ = this.store.select(fromRoot.getSelectedSearchEntitiesGeoJson);
     this.showSidePanel$ = this.store.select(fromRoot.getHomeShowSidenav);
   }
 
   onMapMoveend($event: any) {
-    console.log('onMapMoveend:', $event.target.getCenter(), $event.target.getZoom());
     const center = $event.target.getCenter();
     const zoom = $event.target.getZoom();
     this.store.dispatch(new fromMap.SetExtentAction({ center, zoom }));

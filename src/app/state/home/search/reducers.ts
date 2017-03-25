@@ -1,3 +1,6 @@
+import { featureCollection } from '@turf/helpers';
+const merge = require('lodash.merge');
+
 import * as search from './actions';
 
 export interface State {
@@ -14,6 +17,21 @@ const initialState: State = {
   selected: '',
   loading: false,
   query: ''
+}
+
+function decorate(result: any): any {
+  return merge({}, result, {
+    place: {
+      properties: { $icon: icon(result.recordType) }
+    }
+  });
+}
+
+function icon(recordType: string): string {
+  switch(recordType) {
+    case 'airport': return 'airport-11';
+    default: return 'circle-stroked-11';
+  }
 }
 
 export function reducer(state = initialState, action: search.Actions): State {
@@ -37,13 +55,12 @@ export function reducer(state = initialState, action: search.Actions): State {
 
     case search.ActionTypes.SEARCH_COMPLETE: {
       const { results } = action.payload;
-      const entities = results.reduce((entities, result) => {
-        entities[result.id] = result;
-        return entities;
+      const entities = results.reduce((entities: any, result: any) => {
+        return Object.assign({}, entities, { [result.id]: decorate(result) });
       }, {});
 
       return Object.assign({}, state, {
-        ids: results.map(result => result.id),
+        ids: results.map((result: any) => result.id),
         entities: Object.assign({}, state.entities, entities),
         loading: false
       });
@@ -72,6 +89,8 @@ export const getEntitiesAsList = (state: State) => Object.keys(state.entities)
     entities.push(state.entities[id]);
     return entities;
   }, []);
+
+export const getSelectedEntitiesGeoJson = (state: State) => featureCollection(state.ids.map((id) => state.entities[id].place));
 
 export const getSelectedEntitiesAsList = (state: State) => state.ids
   .map((id) => state.entities[id]);

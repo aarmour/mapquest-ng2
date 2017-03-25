@@ -33,6 +33,7 @@ export class LayerComponent implements SetMap {
       layout: this.layout,
       paint: this.paint
     });
+    console.log(this.map.getLayer(this.id));
   }
 
 }

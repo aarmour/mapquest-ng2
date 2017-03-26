@@ -14,6 +14,7 @@ import {
 import { MapboxService } from '../mapbox.service';
 import { ControlComponent } from '../control';
 import { LayerComponent } from './layer.component';
+import { MarkerComponent } from './marker.component';
 import { SourceComponent } from '../source';
 
 @Component({
@@ -38,6 +39,7 @@ export class MapComponent implements AfterViewInit, OnChanges {
 
   @ContentChildren(forwardRef(() => ControlComponent)) controls: QueryList<any>;
   @ContentChildren(LayerComponent) layers: QueryList<any>;
+  @ContentChildren(MarkerComponent) markers: QueryList<any>;
   @ContentChildren(forwardRef(() => SourceComponent)) sources: QueryList<any>;
 
   constructor(private mapbox: MapboxService) {
@@ -70,24 +72,15 @@ export class MapComponent implements AfterViewInit, OnChanges {
       ['movestart', this.movestart]
     ]);
 
-    this.addControls();
-    this.addSources();
-    this.addLayers();
+    this.setMapForChildren(this.controls);
+    this.setMapForChildren(this.sources);
+    this.setMapForChildren(this.layers);
+    this.setMapForChildren(this.markers);
   }
 
-  private addControls() {
-    if (!this.controls) return;
-    this.controls.forEach((control) => control.mbSetMap(this.map));
-  }
-
-  private addLayers() {
-    if (!this.layers) return;
-    this.layers.forEach((layer) => layer.mbSetMap(this.map));
-  }
-
-  private addSources() {
-    if (!this.sources) return;
-    this.sources.forEach((source) => source.mbSetMap(this.map));
+  setMapForChildren(children) {
+    if (!children) return;
+    children.forEach((child) => child.mbSetMap(this.map));
   }
 
   private extentHasChanged() {

@@ -34,4 +34,8 @@ export class MapboxService {
     return new mapbox.NavigationControl();
   }
 
+  marker(el: any, options?: any): mapboxgl.Marker {
+    return new mapbox.Marker(el, options);
+  }
+
 }

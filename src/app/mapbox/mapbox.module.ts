@@ -7,7 +7,8 @@ import {
 } from './control';
 import {
   LayerComponent,
-  MapComponent
+  MapComponent,
+  MarkerComponent
 } from './map';
 import { GeojsonSourceComponent } from './source';
 import { MapboxService } from './mapbox.service';
@@ -21,6 +22,7 @@ import { MapboxService } from './mapbox.service';
     GeojsonSourceComponent,
     LayerComponent,
     MapComponent,
+    MarkerComponent,
     NavigationControlComponent
   ],
   providers: [
@@ -31,6 +33,7 @@ import { MapboxService } from './mapbox.service';
     GeojsonSourceComponent,
     LayerComponent,
     MapComponent,
+    MarkerComponent,
     NavigationControlComponent
   ]
 })

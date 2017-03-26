@@ -22,6 +22,8 @@ import * as search from '../../state/home/search/actions';
         [display]="result.displayString"
         [selected]="(selectedSearchResultId$ | async) === result.id"
         (select)="onSelectSearchResult(result)"
+        (mouseenter)="onSearchResultMouseenter(result)"
+        (mouseleave)="onSearchResultMouseleave(result)"
       >
       </mq-search-result>
     </div>
@@ -49,6 +51,14 @@ export class SearchPanelContainerComponent {
 
   onSelectSearchResult(result) {
     this.store.dispatch(new search.SelectSearchResultAction(result.id));
+  }
+
+  onSearchResultMouseenter(result) {
+    this.store.dispatch(new search.HighlightSearchResultAction(result.id));
+  }
+
+  onSearchResultMouseleave(result) {
+    this.store.dispatch(new search.HighlightSearchResultAction(''));
   }
 
 }

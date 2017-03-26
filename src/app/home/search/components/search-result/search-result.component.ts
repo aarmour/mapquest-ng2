@@ -3,7 +3,6 @@ import {
   EventEmitter,
   HostBinding,
   Input,
-  OnInit,
   Output,
   ViewEncapsulation
 } from '@angular/core';
@@ -14,7 +13,7 @@ import {
   styleUrls: ['./search-result.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SearchResultComponent implements OnInit {
+export class SearchResultComponent {
 
   @Input() display: string = '';
 
@@ -25,8 +24,5 @@ export class SearchResultComponent implements OnInit {
   @Output() select: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

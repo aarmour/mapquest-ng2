@@ -49,6 +49,10 @@ export const getSearchEntities = createSelector(getSearchState, fromSearch.getEn
 
 export const getSearchEntitiesAsList = createSelector(getSearchState, fromSearch.getEntitiesAsList);
 
+export const getHighlightedSearchResult = createSelector(getSearchState, fromSearch.getHighlightedSearchResult);
+
+export const getHighlightedSearchResultGeoJson = createSelector(getSearchState, fromSearch.getHighlightedSearchResultGeoJson);
+
 export const getSelectedSearchEntitiesGeoJson = createSelector(getSearchState, fromSearch.getSelectedEntitiesGeoJson);
 
 export const getSelectedSearchEntitiesAsList = createSelector(getSearchState, fromSearch.getSelectedEntitiesAsList);

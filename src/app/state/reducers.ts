@@ -53,6 +53,10 @@ export const getSelectedSearchEntitiesGeoJson = createSelector(getHomeState, fro
 
 export const getSelectedSearchEntitiesAsList = createSelector(getHomeState, fromHome.getSelectedSearchEntitiesAsList);
 
+export const getHighlightedSearchResult = createSelector(getHomeState, fromHome.getHighlightedSearchResult);
+
+export const getHighlightedSearchResultGeoJson = createSelector(getHomeState, fromHome.getHighlightedSearchResultGeoJson);
+
 export const getSelectedSearchResult = createSelector(getHomeState, fromHome.getSelectedSearchResult);
 
 export const getSelectedSearchResultId = createSelector(getHomeState, fromHome.getSelectedSearchResultId);

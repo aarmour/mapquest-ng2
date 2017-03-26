@@ -6,7 +6,8 @@ import * as search from './actions';
 export interface State {
   ids: string[];
   entities: Object;
-  selected: string,
+  highlighted: string;
+  selected: string;
   loading: boolean;
   query: string;
 }
@@ -14,6 +15,7 @@ export interface State {
 const initialState: State = {
   ids: [],
   entities: {},
+  highlighted: '',
   selected: '',
   loading: false,
   query: ''
@@ -66,6 +68,14 @@ export function reducer(state = initialState, action: search.Actions): State {
       });
     }
 
+    case search.ActionTypes.HIGHLIGHT_SEARCH_RESULT: {
+      const id = action.payload;
+
+      return Object.assign({}, state, {
+        highlighted: id
+      });
+    }
+
     case search.ActionTypes.SELECT_SEARCH_RESULT: {
       const id = action.payload;
 
@@ -89,6 +99,10 @@ export const getEntitiesAsList = (state: State) => Object.keys(state.entities)
     entities.push(state.entities[id]);
     return entities;
   }, []);
+
+export const getHighlightedSearchResult = (state: State) => state.entities[state.highlighted];
+
+export const getHighlightedSearchResultGeoJson = (state: State) => (state.entities[state.highlighted] || {}).place;
 
 export const getSelectedEntitiesGeoJson = (state: State) => featureCollection(state.ids.map((id) => state.entities[id].place));
 

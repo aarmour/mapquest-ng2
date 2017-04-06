@@ -1,4 +1,4 @@
-import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/map';
 import { Inject, Injectable } from '@angular/core';
 import { Http, Request, RequestMethod, URLSearchParams } from '@angular/http';
 
@@ -7,10 +7,10 @@ import { Observable } from 'rxjs/Observable';
 import { SearchAheadPredictionResults } from '../models/search-ahead';
 
 export interface SearchAheadPredictionParams {
-  q: string,
-  collection: string[],
-  limit?: number,
-  location?: number[]
+  q: string;
+  collection: string[];
+  limit?: number;
+  location?: number[];
 }
 
 @Injectable()
@@ -32,7 +32,7 @@ export class MapquestSearchAheadService {
     const request: Request = new Request({
       url: `${this.API_PATH}/prediction`,
       method: RequestMethod.Get,
-      search
+      params: search
     });
 
     return this.http.request(request)

@@ -8,7 +8,7 @@ describe('Service: MapquestSearch', () => {
   let service: MapquestSearchService = null;
   let backend: MockBackend = null;
 
-  let key = 42;
+  let key: String = '42';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -30,7 +30,7 @@ describe('Service: MapquestSearch', () => {
         },
         MapquestSearchService
       ]
-    })
+    });
   });
 
   beforeEach(inject([MapquestSearchService, MockBackend], (mapquestSearchService: MapquestSearchService, mockBackend: MockBackend) => {
